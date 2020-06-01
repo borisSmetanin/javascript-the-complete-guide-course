@@ -6,13 +6,15 @@ const config = require('../config');
 /* GET home page. */
 router.get('/', (req, res, next) => {
 
-  const dynamic_data = { title: 'Test title ?' };
+  const dynamic_data = {};
 
   res.render('index', Object.assign({}, config, dynamic_data));
 });
 
-router.get('/test', (req, res, next) => {
-  res.render('test', { title: 'Express' });
+router.get('/:page.html', (req, res, next) => {
+
+  const dynamic_data = {};
+  res.render(req.params.page, Object.assign({}, config, dynamic_data));
 });
 
 module.exports = router;
